@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen tipo ICFES colegiales</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        .hidden { display: none; }
+        .pregunta { margin-bottom: 20px; }
+        button { padding: 8px 16px; }
+        .materia { margin-top: 30px; }
+        .selector-materia { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Examen tipo ICFES</h2>
+    <div id="login">
+        <label for="cedula">Ingrese su cédula:</label>
+        <input type="text" id="cedula" maxlength="10" required>
+        <button onclick="iniciarExamen()">Ingresar</button>
+        <p id="errorCedula" style="color:red;"></p>
+    </div>
+
+    <div id="materiaSelector" class="hidden selector-materia">
+        <label for="materia">Seleccione la materia por la que desea comenzar:</label>
+        <select id="materia">
+            <option value="matematicas">Matemáticas</option>
+            <option value="quimica">Química</option>
+            <option value="sociales">Sociales</option>
+            <option value="lenguaje">Lenguaje</option>
+            <option value="filosofia">Filosofía</option>
+        </select>
+        <button onclick="mostrarMateria()">Comenzar</button>
+    </div>
+
+    <form id="examen" class="hidden">
+        <!-- Matemáticas -->
+        <div class="materia hidden" id="matematicas">
+            <h3>Matemáticas</h3>
+            <div class="pregunta">
+                <strong>1.</strong> ¿Cuál es el resultado de 7 × 8?<br>
+                <input type="radio" name="matematicas_p1" value="a"> a) 54<br>
+                <input type="radio" name="matematicas_p1" value="b"> b) 56<br>
+                <input type="radio" name="matematicas_p1" value="c"> c) 64<br>
+                <input type="radio" name="matematicas_p1" value="d"> d) 48<br>
+            </div>
+            <div class="pregunta">
+                <strong>2.</strong> ¿Cuánto es 12 + 15?<br>
+                <input type="radio" name="matematicas_p2" value="a"> a) 27<br>
+                <input type="radio" name="matematicas_p2" value="b"> b) 25<br>
+                <input type="radio" name="matematicas_p2" value="c"> c) 30<br>
+                <input type="radio" name="matematicas_p2" value="d"> d) 22<br>
+            </div>
+            <div class="pregunta">
+                <strong>3.</strong> ¿Cuál es la raíz cuadrada de 81?<br>
+                <input type="radio" name="matematicas_p3" value="a"> a) 9<br>
+                <input type="radio" name="matematicas_p3" value="b"> b) 8<br>
+                <input type="radio" name="matematicas_p3" value="c"> c) 7<br>
+                <input type="radio" name="matematicas_p3" value="d"> d) 6<br>
+            </div>
+            <div class="pregunta">
+                <strong>4.</strong> ¿Cuánto es 100 dividido entre 4?<br>
+                <input type="radio" name="matematicas_p4" value="a"> a) 25<br>
+                <input type="radio" name="matematicas_p4" value="b"> b) 20<br>
+                <input type="radio" name="matematicas_p4" value="c"> c) 40<br>
+                <input type="radio" name="matematicas_p4" value="d"> d) 50<br>
+            </div>
+            <div class="pregunta">
+                <strong>5.</strong> ¿Cuánto es 5 al cuadrado?<br>
+                <input type="radio" name="matematicas_p5" value="a"> a) 10<br>
+                <input type="radio" name="matematicas_p5" value="b"> b) 25<br>
+                <input type="radio" name="matematicas_p5" value="c"> c) 15<br>
+                <input type="radio" name="matematicas_p5" value="d"> d) 20<br>
+            </div>
+            <div class="pregunta">
+                <strong>6.</strong> ¿Cuál es el valor de π (aproximado)?<br>
+                <input type="radio" name="matematicas_p6" value="a"> a) 2.14<br>
+                <input type="radio" name="matematicas_p6" value="b"> b) 3.14<br>
+                <input type="radio" name="matematicas_p6" value="c"> c) 4.13<br>
+                <input type="radio" name="matematicas_p6" value="d"> d) 1.34<br>
+            </div>
+            <div class="pregunta">
+                <strong>7.</strong> ¿Cuánto es 45 - 17?<br>
+                <input type="radio" name="matematicas_p7" value="a"> a) 28<br>
+                <input type="radio" name="matematicas_p7" value="b"> b) 32<br>
+                <input type="radio" name="matematicas_p7" value="c"> c) 27<br>
+                <input type="radio" name="matematicas_p7" value="d"> d) 29<br>
+            </div>
+            <button type="button" onclick="guardarMateria('matematicas')">Guardar Matemáticas</button>
+        </div>
+        <!-- Química -->
+        <div class="materia hidden" id="quimica">
+            <h3>Química</h3>
+            <div class="pregunta">
+                <strong>1.</strong> ¿Cuál es el símbolo químico del agua?<br>
+                <input type="radio" name="quimica_p1" value="a"> a) CO2<br>
+                <input type="radio" name="quimica_p1" value="b"> b) H2O<br>
+                <input type="radio" name="quimica_p1" value="c"> c) O2<br>
+                <input type="radio" name="quimica_p1" value="d"> d) NaCl<br>
+            </div>
+            <div class="pregunta">
+                <strong>2.</strong> ¿Cuál es el elemento más abundante en el universo?<br>
+                <input type="radio" name="quimica_p2" value="a"> a) Oxígeno<br>
+                <input type="radio" name="quimica_p2" value="b"> b) Hidrógeno<br>
+                <input type="radio" name="quimica_p2" value="c"> c) Carbono<br>
+                <input type="radio" name="quimica_p2" value="d"> d) Nitrógeno<br>
+            </div>
+            <div class="pregunta">
+                <strong>3.</strong> ¿Cuál es el pH del agua pura?<br>
+                <input type="radio" name="quimica_p3" value="a"> a) 5<br>
+                <input type="radio" name="quimica_p3" value="b"> b) 7<br>
+                <input type="radio" name="quimica_p3" value="c"> c) 3<br>
+                <input type="radio" name="quimica_p3" value="d"> d) 10<br>
+            </div>
+            <div class="pregunta">
+                <strong>4.</strong> ¿Qué partícula tiene carga negativa?<br>
+                <input type="radio" name="quimica_p4" value="a"> a) Protón<br>
+                <input type="radio" name="quimica_p4" value="b"> b) Neutrón<br>
+                <input type="radio" name="quimica_p4" value="c"> c) Electrón<br>
+                <input type="radio" name="quimica_p4" value="d"> d) Núcleo<br>
+            </div>
+            <div class="pregunta">
+                <strong>5.</strong> ¿Cuál es el gas esencial para la respiración humana?<br>
+                <input type="radio" name="quimica_p5" value="a"> a) Oxígeno<br>
+                <input type="radio" name="quimica_p5" value="b"> b) Nitrógeno<br>
+                <input type="radio" name="quimica_p5" value="c"> c) Dióxido de carbono<br>
+                <input type="radio" name="quimica_p5" value="d"> d) Helio<br>
+            </div>
+            <div class="pregunta">
+                <strong>6.</strong> ¿Cuál es el número atómico del carbono?<br>
+                <input type="radio" name="quimica_p6" value="a"> a) 6<br>
+                <input type="radio" name="quimica_p6" value="b"> b) 12<br>
+                <input type="radio" name="quimica_p6" value="c"> c) 8<br>
+                <input type="radio" name="quimica_p6" value="d"> d) 16<br>
+            </div>
+            <div class="pregunta">
+                <strong>7.</strong> ¿Qué estado de la materia no tiene forma ni volumen definidos?<br>
+                <input type="radio" name="quimica_p7" value="a"> a) Sólido<br>
+                <input type="radio" name="quimica_p7" value="b"> b) Líquido<br>
+                <input type="radio" name="quimica_p7" value="c"> c) Gaseoso<br>
+                <input type="radio" name="quimica_p7" value="d"> d) Plasma<br>
+            </div>
+            <button type="button" onclick="guardarMateria('quimica')">Guardar Química</button>
+        </div>
+        <!-- Sociales -->
+        <div class="materia hidden" id="sociales">
+            <h3>Sociales</h3>
+            <div class="pregunta">
+                <strong>1.</strong> ¿En qué continente se encuentra Colombia?<br>
+                <input type="radio" name="sociales_p1" value="a"> a) África<br>
+                <input type="radio" name="sociales_p1" value="b"> b) América<br>
+                <input type="radio" name="sociales_p1" value="c"> c) Europa<br>
+                <input type="radio" name="sociales_p1" value="d"> d) Asia<br>
+            </div>
+            <div class="pregunta">
+                <strong>2.</strong> ¿Quién fue el Libertador de Colombia?<br>
+                <input type="radio" name="sociales_p2" value="a"> a) Simón Bolívar<br>
+                <input type="radio" name="sociales_p2" value="b"> b) Cristóbal Colón<br>
+                <input type="radio" name="sociales_p2" value="c"> c) Francisco Pizarro<br>
+                <input type="radio" name="sociales_p2" value="d"> d) Hernán Cortés<br>
+            </div>
+            <div class="pregunta">
+                <strong>3.</strong> ¿Cuál es la capital de Francia?<br>
+                <input type="radio" name="sociales_p3" value="a"> a) Berlín<br>
+                <input type="radio" name="sociales_p3" value="b"> b) Madrid<br>
+                <input type="radio" name="sociales_p3" value="c"> c) París<br>
+                <input type="radio" name="sociales_p3" value="d"> d) Roma<br>
+            </div>
+            <div class="pregunta">
+                <strong>4.</strong> ¿En qué año se firmó la independencia de Colombia?<br>
+                <input type="radio" name="sociales_p4" value="a"> a) 1810<br>
+                <input type="radio" name="sociales_p4" value="b"> b) 1492<br>
+                <input type="radio" name="sociales_p4" value="c"> c) 1910<br>
+                <input type="radio" name="sociales_p4" value="d"> d) 1710<br>
+            </div>
+            <div class="pregunta">
+                <strong>5.</strong> ¿Cuál es el río más largo del mundo?<br>
+                <input type="radio" name="sociales_p5" value="a"> a) Amazonas<br>
+                <input type="radio" name="sociales_p5" value="b"> b) Nilo<br>
+                <input type="radio" name="sociales_p5" value="c"> c) Yangtsé<br>
+                <input type="radio" name="sociales_p5" value="d"> d) Misisipi<br>
+            </div>
+            <div class="pregunta">
+                <strong>6.</strong> ¿Qué país tiene la mayor población del mundo?<br>
+                <input type="radio" name="sociales_p6" value="a"> a) India<br>
+                <input type="radio" name="sociales_p6" value="b"> b) China<br>
+                <input type="radio" name="sociales_p6" value="c"> c) Estados Unidos<br>
+                <input type="radio" name="sociales_p6" value="d"> d) Rusia<br>
+            </div>
+            <div class="pregunta">
+                <strong>7.</strong> ¿Cuál es la moneda oficial de la Unión Europea?<br>
+                <input type="radio" name="sociales_p7" value="a"> a) Dólar<br>
+                <input type="radio" name="sociales_p7" value="b"> b) Libra<br>
+                <input type="radio" name="sociales_p7" value="c"> c) Euro<br>
+                <input type="radio" name="sociales_p7" value="d"> d) Franco<br>
+            </div>
+            <button type="button" onclick="guardarMateria('sociales')">Guardar Sociales</button>
+        </div>
+        <!-- Lenguaje -->
+        <div class="materia hidden" id="lenguaje">
+            <h3>Lenguaje</h3>
+            <div class="pregunta">
+                <strong>1.</strong> ¿Cuál es el sinónimo de "feliz"?<br>
+                <input type="radio" name="lenguaje_p1" value="a"> a) Triste<br>
+                <input type="radio" name="lenguaje_p1" value="b"> b) Alegre<br>
+                <input type="radio" name="lenguaje_p1" value="c"> c) Malo<br>
+                <input type="radio" name="lenguaje_p1" value="d"> d) Lento<br>
+            </div>
+            <div class="pregunta">
+                <strong>2.</strong> ¿Cuál es el antónimo de "grande"?<br>
+                <input type="radio" name="lenguaje_p2" value="a"> a) Pequeño<br>
+                <input type="radio" name="lenguaje_p2" value="b"> b) Largo<br>
+                <input type="radio" name="lenguaje_p2" value="c"> c) Alto<br>
+                <input type="radio" name="lenguaje_p2" value="d"> d) Ancho<br>
+            </div>
+            <div class="pregunta">
+                <strong>3.</strong> ¿Cuál es un sustantivo?<br>
+                <input type="radio" name="lenguaje_p3" value="a"> a) Correr<br>
+                <input type="radio" name="lenguaje_p3" value="b"> b) Mesa<br>
+                <input type="radio" name="lenguaje_p3" value="c"> c) Rápido<br>
+                <input type="radio" name="lenguaje_p3" value="d"> d) Azul<br>
+            </div>
+            <div class="pregunta">
+                <strong>4.</strong> ¿Cuál es un verbo?<br>
+                <input type="radio" name="lenguaje_p4" value="a"> a) Saltar<br>
+                <input type="radio" name="lenguaje_p4" value="b"> b) Mesa<br>
+                <input type="radio" name="lenguaje_p4" value="c"> c) Azul<br>
+                <input type="radio" name="lenguaje_p4" value="d"> d) Lento<br>
+            </div>
+            <div class="pregunta">
+                <strong>5.</strong> ¿Cuál es el plural de "lápiz"?<br>
+                <input type="radio" name="lenguaje_p5" value="a"> a) Lápices<br>
+                <input type="radio" name="lenguaje_p5" value="b"> b) Lápizs<br>
+                <input type="radio" name="lenguaje_p5" value="c"> c) Lápizes<br>
+                <input type="radio" name="lenguaje_p5" value="d"> d) Lápiz<br>
+            </div>
+            <div class="pregunta">
+                <strong>6.</strong> ¿Cuál es el adjetivo en la frase "casa grande"?<br>
+                <input type="radio" name="lenguaje_p6" value="a"> a) Casa<br>
+                <input type="radio" name="lenguaje_p6" value="b"> b) Grande<br>
+                <input type="radio" name="lenguaje_p6" value="c"> c) y<br>
+                <input type="radio" name="lenguaje_p6" value="d"> d) La<br>
+            </div>
+            <div class="pregunta">
+                <strong>7.</strong> ¿Cuál es el sujeto en la frase "El perro corre"?<br>
+                <input type="radio" name="lenguaje_p7" value="a"> a) Corre<br>
+                <input type="radio" name="lenguaje_p7" value="b"> b) El perro<br>
+                <input type="radio" name="lenguaje_p7" value="c"> c) El<br>
+                <input type="radio" name="lenguaje_p7" value="d"> d) Perro<br>
+            </div>
+            <button type="button" onclick="guardarMateria('lenguaje')">Guardar Lenguaje</button>
+        </div>
+        <!-- Filosofía -->
+        <div class="materia hidden" id="filosofia">
+            <h3>Filosofía</h3>
+            <div class="pregunta">
+                <strong>1.</strong> ¿Quién es considerado el padre de la filosofía?<br>
+                <input type="radio" name="filosofia_p1" value="a"> a) Aristóteles<br>
+                <input type="radio" name="filosofia_p1" value="b"> b) Sócrates<br>
+                <input type="radio" name="filosofia_p1" value="c"> c) Platón<br>
+                <input type="radio" name="filosofia_p1" value="d"> d) Descartes<br>
+            </div>
+            <div class="pregunta">
+                <strong>2.</strong> ¿Qué es la ética?<br>
+                <input type="radio" name="filosofia_p2" value="a"> a) Ciencia de la vida<br>
+                <input type="radio" name="filosofia_p2" value="b"> b) Estudio del ser<br>
+                <input type="radio" name="filosofia_p2" value="c"> c) Estudio de la moral<br>
+                <input type="radio" name="filosofia_p2" value="d"> d) Ciencia del lenguaje<br>
+            </div>
+            <div class="pregunta">
+                <strong>3.</strong> ¿Quién escribió "La República"?<br>
+                <input type="radio" name="filosofia_p3" value="a"> a) Aristóteles<br>
+                <input type="radio" name="filosofia_p3" value="b"> b) Platón<br>
+                <input type="radio" name="filosofia_p3" value="c"> c) Sócrates<br>
+                <input type="radio" name="filosofia_p3" value="d"> d) Kant<br>
+            </div>
+            <div class="pregunta">
+                <strong>4.</strong> ¿Qué filósofo dijo "pienso, luego existo"?<br>
+                <input type="radio" name="filosofia_p4" value="a"> a) Descartes<br>
+                <input type="radio" name="filosofia_p4" value="b"> b) Nietzsche<br>
+                <input type="radio" name="filosofia_p4" value="c"> c) Hume<br>
+                <input type="radio" name="filosofia_p4" value="d"> d) Marx<br>
+            </div>
+            <div class="pregunta">
+                <strong>5.</strong> ¿Qué estudia la lógica?<br>
+                <input type="radio" name="filosofia_p5" value="a"> a) El arte<br>
+                <input type="radio" name="filosofia_p5" value="b"> b) El razonamiento<br>
+                <input type="radio" name="filosofia_p5" value="c"> c) La naturaleza<br>
+                <input type="radio" name="filosofia_p5" value="d"> d) La sociedad<br>
+            </div>
+            <div class="pregunta">
+                <strong>6.</strong> ¿Quién es el autor de "Crítica de la razón pura"?<br>
+                <input type="radio" name="filosofia_p6" value="a"> a) Kant<br>
+                <input type="radio" name="filosofia_p6" value="b"> b) Hegel<br>
+                <input type="radio" name="filosofia_p6" value="c"> c) Marx<br>
+                <input type="radio" name="filosofia_p6" value="d"> d) Platón<br>
+            </div>
+            <div class="pregunta">
+                <strong>7.</strong> ¿Qué es el existencialismo?<br>
+                <input type="radio" name="filosofia_p7" value="a"> a) Corriente filosófica<br>
+                <input type="radio" name="filosofia_p7" value="b"> b) Religión<br>
+                <input type="radio" name="filosofia_p7" value="c"> c) Ciencia<br>
+                <input type="radio" name="filosofia_p7" value="d"> d) Arte<br>
+            </div>
+            <button type="button" onclick="guardarMateria('filosofia')">Guardar Filosofía</button>
+        </div>
+        <div style="margin-top:20px;">
+            <button type="button" onclick="mostrarCalificaciones()">Mostrar calificaciones por materia</button>
+        </div>
+        <p id="resultado"></p>
+    </form>
+
+    <script>
+        // Respuestas correctas por materia
+        const respuestas = {
+            matematicas: ['b','a','a','a','b','b','a'],
+            quimica: ['b','b','b','c','a','a','c'],
+            sociales: ['b','a','c','a','b','b','c'],
+            lenguaje: ['b','a','b','a','a','b','b'],
+            filosofia: ['b','c','b','a','b','a','a']
+        };
+
+        // Calificaciones por materia
+        const calificaciones = {
+            matematicas: null,
+            quimica: null,
+            sociales: null,
+            lenguaje: null,
+            filosofia: null
+        };
+
+        function iniciarExamen() {
+            const cedula = document.getElementById('cedula').value.trim();
+            const error = document.getElementById('errorCedula');
+            if (!cedula.match(/^\d{6,10}$/)) {
+                error.textContent = "Ingrese una cédula válida (6 a 10 dígitos numéricos).";
+                return;
+            }
+            error.textContent = "";
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('materiaSelector').classList.remove('hidden');
+            document.getElementById('examen').classList.remove('hidden');
+        }
+
+        function mostrarMateria() {
+            // Oculta todas las materias
+            for (let mat in respuestas) {
+                document.getElementById(mat).classList.add('hidden');
+            }
+            // Muestra la materia seleccionada
+            const materia = document.getElementById('materia').value;
+            document.getElementById(materia).classList.remove('hidden');
+            document.getElementById('resultado').textContent = '';
+        }
+
+        function guardarMateria(materia) {
+            let correctas = 0;
+            for (let i = 1; i <= 7; i++) {
+                const seleccionada = document.querySelector(`input[name="${materia}_p${i}"]:checked`);
+                if (seleccionada && seleccionada.value === respuestas[materia][i-1]) {
+                    correctas++;
+                }
+            }
+            calificaciones[materia] = correctas;
+            document.getElementById('resultado').textContent =
+                `Guardado: ${correctas} de 7 respuestas correctas en ${materia.charAt(0).toUpperCase() + materia.slice(1)}.`;
+            // Oculta la materia actual
+            document.getElementById(materia).classList.add('hidden');
+            // Permite seleccionar otra materia
+            document.getElementById('materiaSelector').classList.remove('hidden');
+        }
+
+        function mostrarCalificaciones() {
+            let res = '';
+            for (let mat in calificaciones) {
+                let nombre = mat.charAt(0).toUpperCase() + mat.slice(1);
+                if (calificaciones[mat] !== null) {
+                    res += `${nombre}: ${calificaciones[mat]} de 7 correctas\n`;
+                } else {
+                    res += `${nombre}: No contestado\n`;
+                }
+            }
+            document.getElementById('resultado').textContent = res;
+        }
+    </script>
+</body>
+</html></div>
